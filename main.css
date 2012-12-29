@@ -1,0 +1,53 @@
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color:#666;
+}
+
+a {
+  color:#000;
+}
+
+a:hover {
+  color:#CCC;
+}
+
+#theron {
+  font-weight: bold;
+  color:#CCC;
+  font-size:24pt;
+
+  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+
+  position: absolute;
+  top: 35px;
+  left: -40px;
+}
+
+
+#luhn {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  color:#AAA;
+  font-size:36pt;
+
+  position: absolute;
+  top: -10px;
+  left: 30px;
+}
+
+#centerpiece {
+  position:absolute;
+  left:50%;
+  top:50%;
+
+  width:400px;
+  margin-left:-200px;
+}
+
+#centerpiece p {
+  text-align:center;
+}
