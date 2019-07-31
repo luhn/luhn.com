@@ -1,8 +1,8 @@
 /* Bootstrap the resources that I'm using to run Terraform. */
 
 resource "aws_s3_bucket" "state" {
-	bucket = "luhn-terraform"
-	versioning { enabled = true }
+  bucket = "luhn-terraform"
+  versioning { enabled = true }
 }
 
 resource "aws_iam_user" "self" {
