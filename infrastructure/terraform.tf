@@ -4,6 +4,13 @@ provider "aws" {
   profile = "personal"
 }
 
+provider "aws" {
+  alias   = "east"
+  region  = "us-east-1"
+  version = "~> 2.21"
+  profile = "personal"
+}
+
 terraform {
   required_version = ">= 0.12"
 

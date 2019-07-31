@@ -1,6 +1,7 @@
 /* Provision an SSL certificate with AWS ACM. */
 
 resource "aws_acm_certificate" "main" {
+  provider          = "aws.east"
   domain_name       = "luhn.com"
   validation_method = "DNS"
 
@@ -18,6 +19,7 @@ resource "aws_route53_record" "acm_validation" {
 }
 
 resource "aws_acm_certificate_validation" "main" {
+  provider                = "aws.east"
   certificate_arn         = aws_acm_certificate.main.arn
   validation_record_fqdns = [aws_route53_record.acm_validation.fqdn]
 }

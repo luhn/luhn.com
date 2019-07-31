@@ -8,8 +8,24 @@ resource "aws_route53_record" "main" {
   zone_id = aws_route53_zone.main.zone_id
   name    = "luhn.com"
   type    = "A"
-  ttl     = 3600
-  records = ["143.95.39.117"]
+
+  alias {
+    name                   = aws_cloudfront_distribution.site.domain_name
+    zone_id                = aws_cloudfront_distribution.site.hosted_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "ipv6" {
+  zone_id = aws_route53_zone.main.zone_id
+  name    = "luhn.com"
+  type    = "AAAA"
+
+  alias {
+    name                   = aws_cloudfront_distribution.site.domain_name
+    zone_id                = aws_cloudfront_distribution.site.hosted_zone_id
+    evaluate_target_health = false
+  }
 }
 
 /* DNS for email via Fastmail */
