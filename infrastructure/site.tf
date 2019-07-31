@@ -20,6 +20,14 @@ resource "aws_s3_bucket_object" "css" {
   content_type = "text/css"
 }
 
+resource "aws_s3_bucket_object" "keybase" {
+  bucket       = aws_s3_bucket.site.id
+  key          = ".well-known/keybase.txt"
+  source       = "../.well-known/keybase.txt"
+  etag         = filemd5("../.well-known/keybase.txt")
+  content_type = "text/plain"
+}
+
 /* Bucket permissions */
 
 data "aws_iam_policy_document" "s3_policy" {

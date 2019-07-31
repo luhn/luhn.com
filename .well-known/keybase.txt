@@ -1,0 +1,72 @@
+==================================================================
+https://keybase.io/luhn
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://luhn.com
+  * I am luhn (https://keybase.io/luhn) on keybase.
+  * I have a public key with fingerprint 8E57 AB5E 6FB9 441F 92C4  C3D8 9234 9742 8E86 184E
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0101f48424d0e72d4ebecf6d96fe9581b4b13f1d6328b474b5bcc7c448635255b4610a",
+      "fingerprint": "8e57ab5e6fb9441f92c4c3d8923497428e86184e",
+      "host": "keybase.io",
+      "key_id": "923497428e86184e",
+      "kid": "0101f48424d0e72d4ebecf6d96fe9581b4b13f1d6328b474b5bcc7c448635255b4610a",
+      "uid": "d9cf55f2d8101c316ed7f95c9bbb9d00",
+      "username": "luhn"
+    },
+    "service": {
+      "hostname": "luhn.com",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1564612012,
+  "expire_in": 157680000,
+  "prev": "ea92bc8431e670d5dbfb8ad062441cd5ec9dc50cd1e32371408ed9614c8db3ee",
+  "seqno": 9,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+
+owGtUmtMFEcAPpRDxBI0FkQEhD2gFhH3fbsXQxogrZ7y6CPxhVxvdmZhAW+vt8fj
+eiBFg3JWKKEBmpj0BbShpE1sbZU0FSJiRCiIsYQGebUNSK0WAwUUkO6SmvRHf3b+
+TOab7/vmm2+m2n+tzterhq5PrDodnOrVPQV0xxIDW90YkKELM7mxXLQ6oTyIFKcl
+V4KYCcMJnBBpjiZpiCMjCWkEkCCykGdFxDMcAWhAUCIBWYrkAG2kAQMEwSjQNMdS
+DMkwgGYJ3IrFYaJky0IOu0OyOVVbDjFGK2AQKwKepgmRJwVaoCDHkxTNG2mSQxxL
+cDRShdmyoinUcMCqoHhJVjF1YVmN9x/8/zl3/qod5AWRYUQScqqvQBEsgkaRZwQe
+AMBDHNeICnLYrMeRys7Lz7ZhJXGYihRIAtJK1W7xr914QT6uauwO2SkLcp6KZjud
+dsWkqZwuu0YrRMDyj4EFSDao9qcqCpBDkWQbZiJUpuCUNEeCYdW0JE6QcRgqsksO
+ZJE0BmNkOVwd2jmoQLVEVp4EAkdTBGKNOExnIBABZ4U4S6qPIEAGCTwUGFyABKJI
+ykjQOIfUygha4CCgkFavgt6yyZiJV3Nas1RPRcqyWZ35DoSV+HnWUN46L19dWFCk
+d9XBlky5NXl7zbWOwWd/Tr9G+3A6v/UbnyHuiICVUkbvP91W9LZh/5PNL58JK14c
+fLqYNrEv2nU28sUXbu7/uWpP7quGgbLpoZdytj/u22bNnaim+3dStUsJhgQT01gn
+VEbF3Et0F20CK07bYBa1suNSunGjuTzpsw/n4cnAOK/JYXymPTrFHV5/uPlGdkjQ
+aHvpUsZfhTvNQ323dq1tv7T74m9Pe6++c+GgK3LHMrlwSr/84CSMrVj+JMBcMnw6
+YvxQgNes/UJMS53B4f799Wut4aaR0aZjV7ZVzXUBbEver3tf+Tj+zNk7HhToV4X8
+K17rYIW4d2OU6lC0O/NeC/tpyuPU5NDNP46t+A/13Id9SZOu6gafHz6q7ZnruuN6
+9H7R/SNMY453Z8V6v8qU273J5b1yKGZOsUz+sYGMPdE5+l3auXBTYfp8ztUAqvTW
+0bENlYu65vIGsPBodvwrT8jE5VPBJ1L4EHdDVOWW63u7i8FA1Oi+rpEp9xW57s36
+r7u2PpzXQXPjTddSm+fI7Hv1vTAn6c+EQ31gnfz57S89dyfN3/o81z1Qr4990F94
+/u6uqegk38xKXefDpmUsbfi8wROZXTyK5i4XHfhmMjhPXz7SbFseUArDWr0735j+
+ad1MSFhMgbei/z51a39QR1ltmU96Q194YonvJiamy7+pvfwAefTc4bGIGxfH254Y
+PqjJmHl+IaKH+2LP9Xk8UfhlOuNv
+=UxhT
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/luhn
+
+==================================================================
