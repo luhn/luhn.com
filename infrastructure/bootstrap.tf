@@ -13,12 +13,3 @@ resource "aws_s3_bucket_public_access_block" "state" {
   ignore_public_acls      = true
   restrict_public_buckets = true
 }
-
-resource "aws_iam_user" "self" {
-  name = "self"
-}
-
-resource "aws_iam_user_policy_attachment" "self_admin" {
-  user       = aws_iam_user.self.name
-  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
-}
