@@ -13,30 +13,6 @@ resource "aws_s3_bucket_public_access_block" "site" {
   restrict_public_buckets = true
 }
 
-resource "aws_s3_bucket_object" "index" {
-  bucket       = aws_s3_bucket.site.id
-  key          = "index.html"
-  source       = "../index.html"
-  etag         = filemd5("../index.html")
-  content_type = "text/html"
-}
-
-resource "aws_s3_bucket_object" "css" {
-  bucket       = aws_s3_bucket.site.id
-  key          = "main.css"
-  source       = "../main.css"
-  etag         = filemd5("../main.css")
-  content_type = "text/css"
-}
-
-resource "aws_s3_bucket_object" "keybase" {
-  bucket       = aws_s3_bucket.site.id
-  key          = ".well-known/keybase.txt"
-  source       = "../.well-known/keybase.txt"
-  etag         = filemd5("../.well-known/keybase.txt")
-  content_type = "text/plain"
-}
-
 /* Bucket permissions */
 
 resource "aws_s3_bucket_policy" "site" {
