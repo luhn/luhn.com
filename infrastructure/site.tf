@@ -46,7 +46,6 @@ resource "aws_cloudfront_distribution" "site" {
   enabled             = true
   aliases             = ["luhn.com"]
   is_ipv6_enabled     = true
-  default_root_object = "index.html"
   price_class         = "PriceClass_100"
   wait_for_deployment = false
 
@@ -73,6 +72,11 @@ resource "aws_cloudfront_distribution" "site" {
         forward = "none"
       }
     }
+
+    function_association {
+      event_type   = "viewer-request"
+      function_arn = aws_cloudfront_function.request.arn
+    }
   }
 
   viewer_certificate {
@@ -89,3 +93,10 @@ resource "aws_cloudfront_distribution" "site" {
 }
 
 resource "aws_cloudfront_origin_access_identity" "site" {}
+
+resource "aws_cloudfront_function" "request" {
+  name    = "luhncom-request"
+  runtime = "cloudfront-js-1.0"
+  publish = true
+  code    = file("request.js")
+}
