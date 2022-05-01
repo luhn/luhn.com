@@ -2,7 +2,13 @@
 
 resource "aws_s3_bucket" "state" {
   bucket = "luhn-terraform"
-  versioning { enabled = true }
+}
+
+resource "aws_s3_bucket_versioning" "state" {
+  bucket = aws_s3_bucket.state.id
+  versioning_configuration {
+    status = "Enabled"
+  }
 }
 
 resource "aws_s3_bucket_public_access_block" "state" {
