@@ -57,3 +57,13 @@ resource "aws_route53_record" "dkim" {
   ttl     = 3600
   records = ["fm${count.index + 1}.luhn.com.dkim.fmhosted.com"]
 }
+
+/* Bluesky */
+
+resource "aws_route53_record" "bluesky" {
+  zone_id = aws_route53_zone.main.zone_id
+  name    = "_atproto.luhn.com"
+  type    = "TXT"
+  ttl     = 3600
+  records = ["did=did:plc:qxvclfjfctbthozm27pt7tcr"]
+}
