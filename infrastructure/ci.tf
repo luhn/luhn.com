@@ -53,6 +53,23 @@ resource "aws_iam_role_policy" "ci_s3" {
   })
 }
 
+resource "aws_iam_role_policy" "ci_cloudfront" {
+  name = "cloudfront"
+  role = aws_iam_role.ci.name
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect   = "Allow"
+        Action   = "cloudfront:CreateInvalidation"
+        Resource = aws_cloudfront_distribution.site.arn
+      },
+    ]
+  })
+}
+
+
 output "ci_role_arn" {
   value = aws_iam_role.ci.arn
 }
