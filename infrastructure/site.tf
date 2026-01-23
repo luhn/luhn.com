@@ -23,18 +23,28 @@ resource "aws_s3_bucket_policy" "site" {
       {
         Effect = "Allow"
         Principal = {
-          AWS = aws_cloudfront_origin_access_identity.site.iam_arn
+          Service = "cloudfront.amazonaws.com"
         }
         Action   = "s3:GetObject"
         Resource = "${aws_s3_bucket.site.arn}/*"
+        Condition = {
+          StringEquals = {
+            "AWS:SourceArn" = aws_cloudfront_distribution.site.arn
+          }
+        }
       },
       {
         Effect = "Allow"
         Principal = {
-          AWS = aws_cloudfront_origin_access_identity.site.iam_arn
+          Service = "cloudfront.amazonaws.com"
         }
         Action   = "s3:ListBucket"
         Resource = aws_s3_bucket.site.arn
+        Condition = {
+          StringEquals = {
+            "AWS:SourceArn" = aws_cloudfront_distribution.site.arn
+          }
+        }
       },
     ]
   })
@@ -54,12 +64,9 @@ resource "aws_cloudfront_distribution" "site" {
   wait_for_deployment = false
 
   origin {
-    domain_name = aws_s3_bucket.site.bucket_regional_domain_name
-    origin_id   = "S3"
-
-    s3_origin_config {
-      origin_access_identity = aws_cloudfront_origin_access_identity.site.cloudfront_access_identity_path
-    }
+    domain_name              = aws_s3_bucket.site.bucket_regional_domain_name
+    origin_id                = "S3"
+    origin_access_control_id = aws_cloudfront_origin_access_control.site.id
   }
 
   default_cache_behavior {
@@ -88,7 +95,12 @@ resource "aws_cloudfront_distribution" "site" {
   }
 }
 
-resource "aws_cloudfront_origin_access_identity" "site" {}
+resource "aws_cloudfront_origin_access_control" "site" {
+  name                              = "luhn.com"
+  origin_access_control_origin_type = "s3"
+  signing_behavior                  = "always"
+  signing_protocol                  = "sigv4"
+}
 
 resource "aws_cloudfront_function" "request" {
   name    = "luhncom-request"
