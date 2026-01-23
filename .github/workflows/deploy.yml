@@ -28,4 +28,4 @@ jobs:
 
       - name: Upload assets
         run: |
-          aws s3 cp --recursive src/ s3://$STATIC_BUCKET/
+          aws s3 cp --cache-control "max-age=0, s-maxage=31536000" --recursive src/ s3://$STATIC_BUCKET/
