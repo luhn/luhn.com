@@ -60,7 +60,8 @@ resource "aws_cloudfront_distribution" "site" {
   enabled             = true
   aliases             = ["luhn.com"]
   is_ipv6_enabled     = true
-  price_class         = "PriceClass_100"
+  price_class         = "PriceClass_All"
+  web_acl_id          = aws_wafv2_web_acl.site.arn
   wait_for_deployment = false
 
   origin {
@@ -100,6 +101,88 @@ resource "aws_cloudfront_origin_access_control" "site" {
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
   signing_protocol                  = "sigv4"
+}
+
+resource "aws_wafv2_web_acl" "site" {
+  provider = aws.east
+  name     = "CreatedByCloudFront-f29d4c97"
+  scope    = "CLOUDFRONT"
+
+  default_action {
+    allow {}
+  }
+
+  rule {
+    name     = "AWS-AWSManagedRulesAmazonIpReputationList"
+    priority = 0
+
+    override_action {
+      count {}
+    }
+
+    statement {
+      managed_rule_group_statement {
+        name        = "AWSManagedRulesAmazonIpReputationList"
+        vendor_name = "AWS"
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      sampled_requests_enabled   = true
+      metric_name                = "AWS-AWSManagedRulesAmazonIpReputationList"
+    }
+  }
+  rule {
+    name     = "AWS-AWSManagedRulesCommonRuleSet"
+    priority = 1
+
+    override_action {
+      count {}
+    }
+
+    statement {
+      managed_rule_group_statement {
+        name        = "AWSManagedRulesCommonRuleSet"
+        vendor_name = "AWS"
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      sampled_requests_enabled   = true
+      metric_name                = "AWS-AWSManagedRulesCommonRuleSet"
+    }
+  }
+  rule {
+    name     = "AWS-AWSManagedRulesKnownBadInputsRuleSet"
+    priority = 2
+
+    override_action {
+      count {}
+    }
+
+    statement {
+      managed_rule_group_statement {
+        name        = "AWSManagedRulesKnownBadInputsRuleSet"
+        vendor_name = "AWS"
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      sampled_requests_enabled   = true
+      metric_name                = "AWS-AWSManagedRulesKnownBadInputsRuleSet"
+    }
+  }
+
+
+
+  visibility_config {
+    sampled_requests_enabled   = true
+    cloudwatch_metrics_enabled = true
+    metric_name                = "CreatedByCloudFront-f29d4c97"
+  }
 }
 
 resource "aws_cloudfront_function" "request" {
